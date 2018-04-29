@@ -14,6 +14,30 @@
         </button>
     </ion-fab>
     
+    <ion-list no-lines class="chat-list">
+
+        <ion-item *ngFor="let message of messages" class="chat-item">
+            <ion-avatar item-left *ngIf="message.sender == 'api'">
+                <img src="../../assets/imgs/apiai.png"/>
+            </ion-avatar>
+    
+            <ion-avatar item-right *ngIf="message.sender == 'me'">
+                <img src="../../assets/imgs/ionic.png"/>
+            </ion-avatar>
+            
+            <div *ngIf="message.sender == 'api'" class="bubble me">
+                <h3> {{ message.text }}</h3>
+            </div>
+    
+            <div *ngIf="message.sender == 'me'" class="bubble you">
+                <h3> {{ message.text }}</h3>
+            </div>
+            
+        </ion-item>
+    
+
+    </ion-list>
+
 </ion-content>
 
 
@@ -21,13 +45,13 @@
     <ion-toolbar>
         
         <ion-item>
+        
             <ion-input type="text" placeholder="Your message here.."></ion-input>
             
             <button ion-button icon-only item-right clear>
                 <ion-icon name="send"></ion-icon>
             </button>
-
-
+        
         </ion-item>
         
     </ion-toolbar>
